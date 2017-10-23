@@ -6,29 +6,18 @@
         <groupId>${groupId}</groupId>
         <version>${version}</version>
     </parent>
+    
+    
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>${groupId}.dal</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>${project.parent.version}</version>
-    <name>${artifactId}</name>
+    <version>${dal-version}</version>
+	<packaging>jar</packaging>
+    
 
-    <organization>
-        <name>${project.parent.organization.name}</name>
-        <url>${project.parent.organization.url}</url>
-    </organization>
-
-    <developers>
-        <developer>
-            <name>${userName}</name>
-            <organization>${project.parent.organization.name}</organization>
-            <organizationUrl>${project.parent.organization.url}</organizationUrl>
-        </developer>
-    </developers>
 
     <dependencies>
         <dependency>
-            <groupId>${groupId}.client</groupId>
+            <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-client</artifactId>
         </dependency>
         <dependency>
@@ -151,20 +140,4 @@
 			<artifactId>btrace-client</artifactId>
 		</dependency>
     </dependencies>
-    
-    <build>
-		<filters>
-			<filter>../conf/conf-${deploy.env}.properties</filter>
-		</filters>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*</include>
-				</includes>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-	</build>
-
 </project>
