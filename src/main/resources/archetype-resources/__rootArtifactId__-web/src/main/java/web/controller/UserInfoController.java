@@ -27,16 +27,5 @@ public class UserInfoController {
     @Resource
     private UserInfoService userInfoService;
 
-    @RequestMapping(value = "/findUserNameByDesc", method = RequestMethod.GET)
-    public Result<ListWrapper<String>> findUserNameByDesc(
-            @RequestParam(value = "pageSize", required = false) Integer pageSize,
-            @RequestParam(value = "currentPage", required = false) Integer currentPage
-    ) {
-        return userInfoService.findUserNameByDesc(pageSize, currentPage);
-    }
-
-    @RequestMapping(value = "/server/time", method = RequestMethod.GET)
-    public Date serverTime() {
-        return new Date();
-    }
+   
 }
