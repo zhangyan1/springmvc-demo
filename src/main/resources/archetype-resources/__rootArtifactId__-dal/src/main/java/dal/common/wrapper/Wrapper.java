@@ -74,11 +74,4 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.delete(getMapper(), domain, error);
     }
 
-    public Result<Void> create(String tableName) {
-        return MapperWrapper.create(getMapper(), tableName);
-    }
-
-    public Result<Void> create(String tableName, ErrorWrapper error) {
-        return MapperWrapper.create(getMapper(), tableName, error);
-    }
 }

@@ -3,12 +3,11 @@
 #set( $symbol_escape = '\' )
 package ${package}.dal.common.wrapper;
 
-import ${package}.client.common.entity.Entity;
+import ${package}.client.common.domain.Domain;
 import ${package}.client.common.error.ErrorWrapper;
 import ${package}.client.common.exception.DatabaseSqlExecuteException;
 import ${package}.client.common.exception.ParamterInvalidException;
 import ${package}.client.common.list.ListWrapper;
-import ${package}.client.common.model.Model;
 import ${package}.client.common.query.Query;
 import ${package}.client.common.result.Result;
 import ${package}.client.common.result.ResultFactory;
@@ -184,31 +183,6 @@ public class MapperWrapper {
         } catch (Throwable e) {
             if (error == null) {
                 error = new ErrorWrapper(10020, "SQL_ERROR_DELETE", "sql failed execute");
-            }
-            throw new DatabaseSqlExecuteException(error, e);
-        }
-    }
-
-    public static <D extends Domain,Q extends Query> Result<Void> create(Mapper<D,Q> mapper, String tableName) {
-        return create(mapper, tableName, null);
-    }
-
-    public static <D extends Domain, Q extends Query> Result<Void> create(Mapper<D, Q> mapper, String tableName, ErrorWrapper error) {
-        if (mapper == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10021, "MAPPER_NULL_CREATE", "mapper is null"));
-        }
-        if (tableName == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10022, "TABLE_NAME_NULL_CREATE", "tableName is null"));
-        }
-        if (tableName.trim().isEmpty()) {
-            throw new ParamterInvalidException(new ErrorWrapper(10023, "TABLE_NAME_EMPTY_CREATE", "tableName is empty"));
-        }
-        try {
-            mapper.create(tableName);
-            return ResultFactory.success();
-        } catch (Throwable e) {
-            if (error == null) {
-                error = new ErrorWrapper(10024, "SQL_ERROR_CREATE", "sql failed execute");
             }
             throw new DatabaseSqlExecuteException(error, e);
         }
