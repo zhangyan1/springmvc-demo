@@ -97,7 +97,7 @@ public class MapperWrapper {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10009, "MAPPER_NULL_INSERT", "mapper is null"));
         }
-        if (entity == null) {
+        if (domain == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10010, "ENTITY_NULL_INSERT", "entity is null"));
         }
         try {

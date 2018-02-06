@@ -26,27 +26,27 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.count(getMapper(), query, error);
     }
 
-    public Result<ListWrapper<M>> find(Q query) {
+    public Result<ListWrapper<D>> find(Q query) {
         return MapperWrapper.find(getMapper(), query);
     }
 
-    public Result<ListWrapper<M>> find(Q query, ErrorWrapper error) {
+    public Result<ListWrapper<D>> find(Q query, ErrorWrapper error) {
         return MapperWrapper.find(getMapper(), query, error);
     }
 
-    public Result<M> get(Q query) {
+    public Result<D> get(Q query) {
         return MapperWrapper.get(getMapper(), query);
     }
 
-    public Result<M> get(Q query, ErrorWrapper error) {
+    public Result<D> get(Q query, ErrorWrapper error) {
         return MapperWrapper.get(getMapper(), query, error);
     }
 
-    public Result<E> insert(D domain) {
+    public Result<D> insert(D domain) {
         return MapperWrapper.insert(getMapper(), domain);
     }
 
-    public Result<E> insert(D domain, ErrorWrapper error) {
+    public Result<D> insert(D domain, ErrorWrapper error) {
         return MapperWrapper.insert(getMapper(), domain, error);
     }
 
@@ -58,19 +58,19 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.batchInsert(getMapper(), domains, error);
     }
 
-    public Result<E> update(D domain) {
+    public Result<D> update(D domain) {
         return MapperWrapper.update(getMapper(), domain);
     }
 
-    public Result<E> update(D domain, ErrorWrapper error) {
+    public Result<D> update(D domain, ErrorWrapper error) {
         return MapperWrapper.update(getMapper(), domain, error);
     }
 
-    public Result<E> delete(D domain) {
+    public Result<D> delete(D domain) {
         return MapperWrapper.delete(getMapper(), domain);
     }
 
-    public Result<E> delete(D domain, ErrorWrapper error) {
+    public Result<D> delete(D domain, ErrorWrapper error) {
         return MapperWrapper.delete(getMapper(), domain, error);
     }
 
