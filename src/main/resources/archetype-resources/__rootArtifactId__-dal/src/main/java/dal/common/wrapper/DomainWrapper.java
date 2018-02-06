@@ -9,5 +9,5 @@ import ${package}.client.common.query.Query;
 /**
  * Created by ${userName} on ${today}.
  */
-public abstract class DomainWrapper<D extends Domain, Q extends Query> extends Wrapper<D, D, Q> {
+public abstract class DomainWrapper<D extends Domain, Q extends Query> extends Wrapper<D, Q> {
 }

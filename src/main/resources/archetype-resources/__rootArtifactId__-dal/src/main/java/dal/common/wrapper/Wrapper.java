@@ -3,10 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}.dal.common.wrapper;
 
-import ${package}.client.common.entity.Entity;
+import ${package}.client.common.domain.Domain;
 import ${package}.client.common.error.ErrorWrapper;
 import ${package}.client.common.list.ListWrapper;
-import ${package}.client.common.model.Model;
 import ${package}.client.common.query.Query;
 import ${package}.client.common.result.Result;
 import ${package}.dal.common.mapper.Mapper;
@@ -16,8 +15,8 @@ import java.util.List;
 /**
  * Created by ${userName} on ${today}.
  */
-public abstract class Wrapper<E extends Entity, M extends Model, Q extends Query> {
-    protected abstract Mapper<E, M, Q> getMapper();
+public abstract class Wrapper<D extends Domain, Q extends Query> {
+    protected abstract Mapper<D, Q> getMapper();
 
     public Result<Long> count(Q query) {
         return MapperWrapper.count(getMapper(), query);
@@ -43,36 +42,36 @@ public abstract class Wrapper<E extends Entity, M extends Model, Q extends Query
         return MapperWrapper.get(getMapper(), query, error);
     }
 
-    public Result<E> insert(E entity) {
-        return MapperWrapper.insert(getMapper(), entity);
+    public Result<E> insert(D domain) {
+        return MapperWrapper.insert(getMapper(), domain);
     }
 
-    public Result<E> insert(E entity, ErrorWrapper error) {
-        return MapperWrapper.insert(getMapper(), entity, error);
+    public Result<E> insert(D domain, ErrorWrapper error) {
+        return MapperWrapper.insert(getMapper(), domain, error);
     }
 
-    public Result<Long> batchInsert(List<E> entities) {
-        return MapperWrapper.batchInsert(getMapper(), entities);
+    public Result<Long> batchInsert(List<D> domains) {
+        return MapperWrapper.batchInsert(getMapper(), domains);
     }
 
-    public Result<Long> batchInsert(List<E> entities, ErrorWrapper error) {
-        return MapperWrapper.batchInsert(getMapper(), entities, error);
+    public Result<Long> batchInsert(List<D> domains, ErrorWrapper error) {
+        return MapperWrapper.batchInsert(getMapper(), domains, error);
     }
 
-    public Result<E> update(E entity) {
-        return MapperWrapper.update(getMapper(), entity);
+    public Result<E> update(D domain) {
+        return MapperWrapper.update(getMapper(), domain);
     }
 
-    public Result<E> update(E entity, ErrorWrapper error) {
-        return MapperWrapper.update(getMapper(), entity, error);
+    public Result<E> update(D domain, ErrorWrapper error) {
+        return MapperWrapper.update(getMapper(), domain, error);
     }
 
-    public Result<E> delete(E entity) {
-        return MapperWrapper.delete(getMapper(), entity);
+    public Result<E> delete(D domain) {
+        return MapperWrapper.delete(getMapper(), domain);
     }
 
-    public Result<E> delete(E entity, ErrorWrapper error) {
-        return MapperWrapper.delete(getMapper(), entity, error);
+    public Result<E> delete(D domain, ErrorWrapper error) {
+        return MapperWrapper.delete(getMapper(), domain, error);
     }
 
     public Result<Void> create(String tableName) {

@@ -20,11 +20,11 @@ import java.util.List;
  * Created by ${userName} on ${today}.
  */
 public class MapperWrapper {
-    public static <E extends Entity, M extends Model, Q extends Query> Result<Long> count(Mapper<E, M, Q> mapper, Q query) {
+    public static < D extends Domain, Q extends Query> Result<Long> count(Mapper<D, Q> mapper, Q query) {
         return count(mapper, query, null);
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<Long> count(Mapper<E, M, Q> mapper, Q query, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<Long> count(Mapper<D, Q> mapper, Q query, ErrorWrapper error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10000, "MAPPER_NULL_COUNT", "mapper is null"));
         }
@@ -41,11 +41,11 @@ public class MapperWrapper {
         }
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<ListWrapper<M>> find(Mapper<E, M, Q> mapper, Q query) {
+    public static <D extends Domain, Q extends Query> Result<ListWrapper<D>> find(Mapper<D, Q> mapper, Q query) {
         return find(mapper, query, null);
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<ListWrapper<M>> find(Mapper<E, M, Q> mapper, Q query, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<ListWrapper<D>> find(Mapper<D, Q> mapper, Q query, ErrorWrapper error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10003, "MAPPER_NULL_FIND", "mapper is null"));
         }
@@ -69,11 +69,11 @@ public class MapperWrapper {
         }
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<M> get(Mapper<E, M, Q> mapper, Q query) {
+    public static <D extends Domain, Q extends Query> Result<D> get(Mapper<D, Q> mapper, Q query) {
         return get(mapper, query, null);
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<M> get(Mapper<E, M, Q> mapper, Q query, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<D> get(Mapper<D, Q> mapper, Q query, ErrorWrapper error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10006, "MAPPER_NULL_GET", "mapper is null"));
         }
@@ -90,11 +90,11 @@ public class MapperWrapper {
         }
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<E> insert(Mapper<E, M, Q> mapper, E entity) {
-        return insert(mapper, entity, null);
+    public static <D extends Domain, Q extends Query> Result<D> insert(Mapper<D, Q> mapper, D domain) {
+        return insert(mapper, domain, null);
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<E> insert(Mapper<E, M, Q> mapper, E entity, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<D> insert(Mapper<D, Q> mapper, D domain, ErrorWrapper error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10009, "MAPPER_NULL_INSERT", "mapper is null"));
         }
@@ -102,8 +102,8 @@ public class MapperWrapper {
             throw new ParamterInvalidException(new ErrorWrapper(10010, "ENTITY_NULL_INSERT", "entity is null"));
         }
         try {
-            mapper.insert(entity);
-            return ResultFactory.success(entity);
+            mapper.insert(domain);
+            return ResultFactory.success(domain);
         } catch (Throwable e) {
             if (error == null) {
                 error = new ErrorWrapper(10011, "SQL_ERROR_INSERT", "sql failed execute");
@@ -112,11 +112,11 @@ public class MapperWrapper {
         }
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<Long> batchInsert(Mapper<E, M, Q> mapper, List<E> entities) {
+    public static <D extends Domain, Q extends Query> Result<Long> batchInsert(Mapper<D, Q> mapper, List<D> entities) {
         return batchInsert(mapper, entities, null);
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<Long> batchInsert(Mapper<E, M, Q> mapper, List<E> entities, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<Long> batchInsert(Mapper<D, Q> mapper, List<D> entities, ErrorWrapper error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10012, "MAPPER_NULL_BATCH_INSERT", "mapper is null"));
         }
@@ -133,11 +133,11 @@ public class MapperWrapper {
         }
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<E> update(Mapper<E, M, Q> mapper, E entity) {
+    public static <D extends Domain, Q extends Query> Result<D> update(Mapper<D, Q> mapper, D entity) {
         return update(mapper, entity, null);
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<E> update(Mapper<E, M, Q> mapper, E entity, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<D> update(Mapper<D, Q> mapper, D entity, ErrorWrapper error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10015, "MAPPER_NULL_UPDATE", "mapper is null"));
         }
@@ -161,11 +161,11 @@ public class MapperWrapper {
         }
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<E> delete(Mapper<E, M, Q> mapper, E entity) {
+    public static <D extends Domain, Q extends Query> Result<D> delete(Mapper<D, Q> mapper, D entity) {
         return delete(mapper, entity, null);
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<E> delete(Mapper<E, M, Q> mapper, E entity, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<D> delete(Mapper<D, Q> mapper, D entity, ErrorWrapper error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10018, "MAPPER_NULL_DELETE", "mapper is null"));
         }
@@ -189,11 +189,11 @@ public class MapperWrapper {
         }
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<Void> create(Mapper<E, M, Q> mapper, String tableName) {
+    public static <D extends Domain,Q extends Query> Result<Void> create(Mapper<D,Q> mapper, String tableName) {
         return create(mapper, tableName, null);
     }
 
-    public static <E extends Entity, M extends Model, Q extends Query> Result<Void> create(Mapper<E, M, Q> mapper, String tableName, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<Void> create(Mapper<D, Q> mapper, String tableName, ErrorWrapper error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10021, "MAPPER_NULL_CREATE", "mapper is null"));
         }

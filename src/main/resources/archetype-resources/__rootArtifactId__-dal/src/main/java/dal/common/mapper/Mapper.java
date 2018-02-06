@@ -3,8 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.dal.common.mapper;
 
-import ${package}.client.common.entity.Entity;
-import ${package}.client.common.model.Model;
+import ${package}.client.common.domain.Domain;
 import ${package}.client.common.query.Query;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,20 +12,18 @@ import java.util.List;
 /**
  * Created by ${userName} on ${today}.
  */
-public interface Mapper<E extends Entity, M extends Model, Q extends Query> {
+public interface Mapper<D extends Domain, Q extends Query> {
     long count(Q query);
 
-    List<M> find(Q query);
+    long insert(D value);
 
-    M get(Q query);
+    long batchInsert(List<D> value);
 
-    long insert(E value);
+    long update(D value);
 
-    long batchInsert(List<E> value);
-
-    long update(E value);
-
-    long delete(E value);
-
-    void create(@Param("tableName") String tableName);
+    long delete(D value);
+    
+    List<D> find(Q query);
+    
+    D get(Q query);
 }

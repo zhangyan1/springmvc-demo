@@ -9,5 +9,5 @@ import ${package}.client.common.query.Query;
 /**
  * Created by ${userName} on ${today}.
  */
-public interface DomainMapper<D extends Domain, Q extends Query> extends Mapper<D, D, Q> {
+public interface DomainMapper<D extends Domain, Q extends Query> extends Mapper<D, Q> {
 }
