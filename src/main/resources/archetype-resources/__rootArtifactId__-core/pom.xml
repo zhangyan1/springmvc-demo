@@ -8,27 +8,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>${groupId}.core</groupId>
     <artifactId>${artifactId}</artifactId>
     <version>${project.parent.version}</version>
     <name>${artifactId}</name>
-
-    <organization>
-        <name>${project.parent.organization.name}</name>
-        <url>${project.parent.organization.url}</url>
-    </organization>
-
-    <developers>
-        <developer>
-            <name>${userName}</name>
-            <organization>${project.parent.organization.name}</organization>
-            <organizationUrl>${project.parent.organization.url}</organizationUrl>
-        </developer>
-    </developers>
-
     <dependencies>
         <dependency>
-            <groupId>${groupId}.dal</groupId>
+            <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-dal</artifactId>
         </dependency>
         
