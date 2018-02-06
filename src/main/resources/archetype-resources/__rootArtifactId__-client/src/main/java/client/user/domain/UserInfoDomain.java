@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.user.domain;
 
-import ${package}.client.common.domain.Domain
+import ${package}.client.common.domain.Domain;
 
 
 

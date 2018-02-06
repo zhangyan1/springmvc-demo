@@ -1,9 +1,9 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.client.user.domain;
+package ${package}.client.user.query;
 
-import ${package}.client.common.query.Query
+import ${package}.client.common.query.Query;
 
 
 
