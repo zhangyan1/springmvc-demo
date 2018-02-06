@@ -7,28 +7,16 @@
         <version>${version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>${groupId}.web</groupId>
     <artifactId>${artifactId}</artifactId>
     <packaging>war</packaging>
     <version>${project.parent.version}</version>
     <name>${parentArtifactId}-web</name>
 
-    <organization>
-        <name>${project.parent.organization.name}</name>
-        <url>${project.parent.organization.url}</url>
-    </organization>
-
-    <developers>
-        <developer>
-            <name>${userName}</name>
-            <organization>${project.parent.organization.name}</organization>
-            <organizationUrl>${project.parent.organization.url}</organizationUrl>
-        </developer>
-    </developers>
+    
 
     <dependencies>
         <dependency>
-            <groupId>${groupId}.core</groupId>
+            <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-core</artifactId>
         </dependency>
 		<dependency>
