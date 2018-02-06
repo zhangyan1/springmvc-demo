@@ -7,3 +7,7 @@ springmvc 自定义骨架创建应用
 
 
 
+mvn archetype:generate -DarchetypeCatalog=local -DgroupId=com.sun.test -DartifactId=test -Dtoday=06/02/2018 -DuserName=zhangyan
+
+
+
