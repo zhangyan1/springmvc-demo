@@ -11,7 +11,5 @@ import ${package}.client.user.domain.UserInfoDomain;
  * Created by ${userName} on ${today}.
  */
 public interface UserInfoWrapper {
-    Result<ListWrapper<UserInfoDomain>> findUserInfoOrderByName(Integer pageSize, Integer currentPage, Boolean asc);
-
-    Result<Integer> randomUpdateUsers(Integer pageSize, Integer currentPage, Boolean asc);
+    
 }
