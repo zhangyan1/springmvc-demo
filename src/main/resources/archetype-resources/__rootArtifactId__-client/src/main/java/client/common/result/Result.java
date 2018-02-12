@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.common.result;
 
-import ${package}.client.common.error.ErrorWrapper;
+import ${package}.client.common.error.ErrorInfo;
 import lombok.Data;
 
 /**
@@ -13,7 +13,7 @@ import lombok.Data;
 public class Result<Value> {
     private boolean success;
     private Value data;
-    private ErrorWrapper error;
+    private ErrorInfo error;
 
     Result(boolean success) {
         this(success, null, null);
@@ -23,7 +23,7 @@ public class Result<Value> {
         this(success, data, null);
     }
 
-    Result(boolean success, Value data, ErrorWrapper error) {
+    Result(boolean success, Value data, ErrorInfo error) {
         this.success = success;
         this.data = data;
         this.error = error;

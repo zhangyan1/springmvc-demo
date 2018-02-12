@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.common.result;
 
-import ${package}.client.common.error.ErrorWrapper;
+import ${package}.client.common.error.ErrorInfo;
 import ${package}.client.common.list.ListWrapper;
 
 import java.util.function.Function;
@@ -25,15 +25,15 @@ public class ResultFactory {
         return success(data, null);
     }
 
-    public static <Value> Result<Value> success(ErrorWrapper error) {
+    public static <Value> Result<Value> success(ErrorInfo error) {
         return success(null, error);
     }
 
-    public static <Value> Result<Value> successCheck(Value data, ErrorWrapper error) {
+    public static <Value> Result<Value> successCheck(Value data, ErrorInfo error) {
         return new Result<>(true, data, data == null ? error : null);
     }
 
-    public static <Value> Result<Value> success(Value data, ErrorWrapper error) {
+    public static <Value> Result<Value> success(Value data, ErrorInfo error) {
         if (data == null && error == null) {
             return (Result<Value>) emptySuccess;
         }
@@ -87,14 +87,14 @@ public class ResultFactory {
     }
 
     public static <Value> Result<Value> error(long code, String name, String msg) {
-        return error(new ErrorWrapper(code, name, msg));
+        return error(new ErrorInfo(code, name, msg));
     }
 
     public static <Value> Result<Value> error(Result<?> result) {
         return error(result.getError());
     }
 
-    public static <Value> Result<Value> error(ErrorWrapper error) {
+    public static <Value> Result<Value> error(ErrorInfo error) {
         return new Result<>(false, null, error);
     }
 

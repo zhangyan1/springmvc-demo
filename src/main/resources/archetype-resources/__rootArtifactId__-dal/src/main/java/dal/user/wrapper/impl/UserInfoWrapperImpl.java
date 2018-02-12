@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.dal.user.wrapper.impl;
 
-import ${package}.client.common.error.ErrorWrapper;
+import ${package}.client.common.error.ErrorInfo;
 import ${package}.client.common.exception.DatabaseSqlExecuteException;
 import ${package}.client.common.list.ListWrapper;
 import ${package}.client.common.result.Result;
