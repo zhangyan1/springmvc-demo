@@ -4,7 +4,7 @@
 package ${package}.dal.common.wrapper;
 
 import ${package}.client.common.domain.Domain;
-import ${package}.client.common.error.ErrorWrapper;
+import ${package}.client.common.error.ErrorInfo;
 import ${package}.client.common.exception.DatabaseSqlExecuteException;
 import ${package}.client.common.exception.ParamterInvalidException;
 import ${package}.client.common.list.ListWrapper;
@@ -95,10 +95,10 @@ public class MapperWrapper {
 
     public static <D extends Domain, Q extends Query> Result<D> insert(Mapper<D, Q> mapper, D domain, ErrorInfo error) {
         if (mapper == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10009, "MAPPER_NULL_INSERT", "mapper is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10009, "MAPPER_NULL_INSERT", "mapper is null"));
         }
         if (domain == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10010, "ENTITY_NULL_INSERT", "entity is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10010, "ENTITY_NULL_INSERT", "entity is null"));
         }
         try {
             mapper.insert(domain);
@@ -126,7 +126,7 @@ public class MapperWrapper {
             return ResultFactory.success(mapper.batchInsert(entities));
         } catch (Throwable e) {
             if (error == null) {
-                error = new ErrorWrapper(10014, "SQL_ERROR_INSERT", "sql failed execute");
+                error = new ErrorInfo(10014, "SQL_ERROR_INSERT", "sql failed execute");
             }
             throw new DatabaseSqlExecuteException(error, e);
         }
@@ -154,7 +154,7 @@ public class MapperWrapper {
             return ResultFactory.success(entity);
         } catch (Throwable e) {
             if (error == null) {
-                error = new ErrorWrapper(10017, "SQL_ERROR_UPDATE", "sql failed execute");
+                error = new ErrorInfo(10017, "SQL_ERROR_UPDATE", "sql failed execute");
             }
             throw new DatabaseSqlExecuteException(error, e);
         }

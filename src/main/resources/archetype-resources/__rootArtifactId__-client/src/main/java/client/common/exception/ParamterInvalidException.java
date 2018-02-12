@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.common.exception;
 
-import ${package}.client.common.error.ErrorWrapper;
+import ${package}.client.common.error.ErrorInfo;
 
 /**
  * Created by ${userName} on ${today}.

@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.common.exception;
 
-import ${package}.client.common.error.ErrorWrapper;
+import ${package}.client.common.error.ErrorInfo;
 import lombok.Getter;
 
 /**
@@ -14,7 +14,7 @@ public abstract class BaseException extends RuntimeException {
     private ErrorInfo errorInfo;
 
     public BaseException(ErrorInfo errorInfo) {
-        super(toJson(errorWrapper));
+        super(toJson(errorInfo));
         this.errorInfo = errorInfo;
     }
 

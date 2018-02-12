@@ -4,7 +4,7 @@
 package ${package}.dal.common.wrapper;
 
 import ${package}.client.common.domain.Domain;
-import ${package}.client.common.error.ErrorWrapper;
+import ${package}.client.common.error.ErrorInfo;
 import ${package}.client.common.list.ListWrapper;
 import ${package}.client.common.query.Query;
 import ${package}.client.common.result.Result;
@@ -22,7 +22,7 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.count(getMapper(), query);
     }
 
-    public Result<Long> count(Q query, ErrorWrapper error) {
+    public Result<Long> count(Q query, ErrorInfo error) {
         return MapperWrapper.count(getMapper(), query, error);
     }
 
@@ -30,7 +30,7 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.find(getMapper(), query);
     }
 
-    public Result<ListWrapper<D>> find(Q query, ErrorWrapper error) {
+    public Result<ListWrapper<D>> find(Q query, ErrorInfo error) {
         return MapperWrapper.find(getMapper(), query, error);
     }
 
@@ -38,7 +38,7 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.get(getMapper(), query);
     }
 
-    public Result<D> get(Q query, ErrorWrapper error) {
+    public Result<D> get(Q query, ErrorInfo error) {
         return MapperWrapper.get(getMapper(), query, error);
     }
 
@@ -46,7 +46,7 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.insert(getMapper(), domain);
     }
 
-    public Result<D> insert(D domain, ErrorWrapper error) {
+    public Result<D> insert(D domain, ErrorInfo error) {
         return MapperWrapper.insert(getMapper(), domain, error);
     }
 
@@ -54,7 +54,7 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.batchInsert(getMapper(), domains);
     }
 
-    public Result<Long> batchInsert(List<D> domains, ErrorWrapper error) {
+    public Result<Long> batchInsert(List<D> domains, ErrorInfo error) {
         return MapperWrapper.batchInsert(getMapper(), domains, error);
     }
 
@@ -62,7 +62,7 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.update(getMapper(), domain);
     }
 
-    public Result<D> update(D domain, ErrorWrapper error) {
+    public Result<D> update(D domain, ErrorInfo error) {
         return MapperWrapper.update(getMapper(), domain, error);
     }
 
@@ -70,7 +70,7 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.delete(getMapper(), domain);
     }
 
-    public Result<D> delete(D domain, ErrorWrapper error) {
+    public Result<D> delete(D domain, ErrorInfo error) {
         return MapperWrapper.delete(getMapper(), domain, error);
     }
 
