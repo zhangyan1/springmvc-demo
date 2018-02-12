@@ -11,24 +11,24 @@ import lombok.Getter;
  */
 @Getter
 public abstract class BaseException extends RuntimeException {
-    private ErrorWrapper errorWrapper;
+    private ErrorInfo errorInfo;
 
-    public BaseException(ErrorWrapper errorWrapper) {
+    public BaseException(ErrorInfo errorInfo) {
         super(toJson(errorWrapper));
-        this.errorWrapper = errorWrapper;
+        this.errorInfo = errorInfo;
     }
 
-    public BaseException(ErrorWrapper errorWrapper, Throwable cause) {
-        super(toJson(errorWrapper), cause);
-        this.errorWrapper = errorWrapper;
+    public BaseException(ErrorInfo errorInfo, Throwable cause) {
+        super(toJson(errorInfo), cause);
+        this.errorInfo = errorInfo;
     }
 
-    public BaseException(ErrorWrapper errorWrapper, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(toJson(errorWrapper), cause, enableSuppression, writableStackTrace);
-        this.errorWrapper = errorWrapper;
+    public BaseException(ErrorInfo errorInfo, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(toJson(errorInfo), cause, enableSuppression, writableStackTrace);
+        this.errorInfo = errorInfo;
     }
 
-    private static String toJson(ErrorWrapper errorWrapper) {
-        return errorWrapper == null ? null : errorWrapper.toJson();
+    private static String toJson(ErrorInfo errorInfo) {
+        return errorInfo == null ? null : errorInfo.toJson();
     }
 }

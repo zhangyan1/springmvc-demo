@@ -9,15 +9,15 @@ import ${package}.client.common.error.ErrorWrapper;
  * Created by ${userName} on ${today}.
  */
 public class DatabaseSqlExecuteException extends BaseException {
-    public DatabaseSqlExecuteException(ErrorWrapper errorWrapper) {
-        super(errorWrapper);
+    public DatabaseSqlExecuteException(ErrorInfo errorInfo) {
+        super(errorInfo);
     }
 
-    public DatabaseSqlExecuteException(ErrorWrapper errorWrapper, Throwable cause) {
-        super(errorWrapper, cause);
+    public DatabaseSqlExecuteException(ErrorInfo errorInfo, Throwable cause) {
+        super(errorInfo, cause);
     }
 
-    public DatabaseSqlExecuteException(ErrorWrapper errorWrapper, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(errorWrapper, cause, enableSuppression, writableStackTrace);
+    public DatabaseSqlExecuteException(ErrorInfo errorInfo, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(errorInfo, cause, enableSuppression, writableStackTrace);
     }
 }

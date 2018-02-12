@@ -23,18 +23,18 @@ public class MapperWrapper {
         return count(mapper, query, null);
     }
 
-    public static <D extends Domain, Q extends Query> Result<Long> count(Mapper<D, Q> mapper, Q query, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<Long> count(Mapper<D, Q> mapper, Q query, ErrorInfo error) {
         if (mapper == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10000, "MAPPER_NULL_COUNT", "mapper is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10000, "MAPPER_NULL_COUNT", "mapper is null"));
         }
         if (query == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10001, "QUERY_NULL_COUNT", "query is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10001, "QUERY_NULL_COUNT", "query is null"));
         }
         try {
             return ResultFactory.success(mapper.count(query));
         } catch (Throwable e) {
             if (error == null) {
-                error = new ErrorWrapper(10002, "SQL_ERROR_COUNT", "sql failed execute");
+                error = new ErrorInfo(10002, "SQL_ERROR_COUNT", "sql failed execute");
             }
             throw new DatabaseSqlExecuteException(error, e);
         }
@@ -44,12 +44,12 @@ public class MapperWrapper {
         return find(mapper, query, null);
     }
 
-    public static <D extends Domain, Q extends Query> Result<ListWrapper<D>> find(Mapper<D, Q> mapper, Q query, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<ListWrapper<D>> find(Mapper<D, Q> mapper, Q query, ErrorInfo error) {
         if (mapper == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10003, "MAPPER_NULL_FIND", "mapper is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10003, "MAPPER_NULL_FIND", "mapper is null"));
         }
         if (query == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10004, "QUERY_NULL_FIND", "query is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10004, "QUERY_NULL_FIND", "query is null"));
         }
         try {
             if (query.isPageEnable()) {
@@ -62,7 +62,7 @@ public class MapperWrapper {
             return ResultFactory.successList(mapper.find(query), query.getTotalCount(), query.getCurrentPage(), query.getPageSize());
         } catch (Throwable e) {
             if (error == null) {
-                error = new ErrorWrapper(10005, "SQL_ERROR_FIND", "sql failed execute");
+                error = new ErrorInfo(10005, "SQL_ERROR_FIND", "sql failed execute");
             }
             throw new DatabaseSqlExecuteException(error, e);
         }
@@ -72,18 +72,18 @@ public class MapperWrapper {
         return get(mapper, query, null);
     }
 
-    public static <D extends Domain, Q extends Query> Result<D> get(Mapper<D, Q> mapper, Q query, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<D> get(Mapper<D, Q> mapper, Q query, ErrorInfo error) {
         if (mapper == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10006, "MAPPER_NULL_GET", "mapper is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10006, "MAPPER_NULL_GET", "mapper is null"));
         }
         if (query == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10007, "QUERY_NULL_GET", "query is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10007, "QUERY_NULL_GET", "query is null"));
         }
         try {
             return ResultFactory.successCheck(mapper.get(query), error);
         } catch (Throwable e) {
             if (error == null) {
-                error = new ErrorWrapper(10008, "SQL_ERROR_GET", "sql failed execute");
+                error = new ErrorInfo(10008, "SQL_ERROR_GET", "sql failed execute");
             }
             throw new DatabaseSqlExecuteException(error, e);
         }
@@ -93,7 +93,7 @@ public class MapperWrapper {
         return insert(mapper, domain, null);
     }
 
-    public static <D extends Domain, Q extends Query> Result<D> insert(Mapper<D, Q> mapper, D domain, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<D> insert(Mapper<D, Q> mapper, D domain, ErrorInfo error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorWrapper(10009, "MAPPER_NULL_INSERT", "mapper is null"));
         }
@@ -105,7 +105,7 @@ public class MapperWrapper {
             return ResultFactory.success(domain);
         } catch (Throwable e) {
             if (error == null) {
-                error = new ErrorWrapper(10011, "SQL_ERROR_INSERT", "sql failed execute");
+                error = new ErrorInfo(10011, "SQL_ERROR_INSERT", "sql failed execute");
             }
             throw new DatabaseSqlExecuteException(error, e);
         }
@@ -115,12 +115,12 @@ public class MapperWrapper {
         return batchInsert(mapper, entities, null);
     }
 
-    public static <D extends Domain, Q extends Query> Result<Long> batchInsert(Mapper<D, Q> mapper, List<D> entities, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<Long> batchInsert(Mapper<D, Q> mapper, List<D> entities, ErrorInfo error) {
         if (mapper == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10012, "MAPPER_NULL_BATCH_INSERT", "mapper is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10012, "MAPPER_NULL_BATCH_INSERT", "mapper is null"));
         }
         if (entities == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10013, "ENTITY_NULL_BATCH_INSERT", "entities is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10013, "ENTITY_NULL_BATCH_INSERT", "entities is null"));
         }
         try {
             return ResultFactory.success(mapper.batchInsert(entities));
@@ -136,12 +136,12 @@ public class MapperWrapper {
         return update(mapper, entity, null);
     }
 
-    public static <D extends Domain, Q extends Query> Result<D> update(Mapper<D, Q> mapper, D entity, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<D> update(Mapper<D, Q> mapper, D entity, ErrorInfo error) {
         if (mapper == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10015, "MAPPER_NULL_UPDATE", "mapper is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10015, "MAPPER_NULL_UPDATE", "mapper is null"));
         }
         if (entity == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10016, "ENTITY_NULL_UPDATE", "entity is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10016, "ENTITY_NULL_UPDATE", "entity is null"));
         }
         try {
             long result = mapper.update(entity);
@@ -164,12 +164,12 @@ public class MapperWrapper {
         return delete(mapper, entity, null);
     }
 
-    public static <D extends Domain, Q extends Query> Result<D> delete(Mapper<D, Q> mapper, D entity, ErrorWrapper error) {
+    public static <D extends Domain, Q extends Query> Result<D> delete(Mapper<D, Q> mapper, D entity, ErrorInfo error) {
         if (mapper == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10018, "MAPPER_NULL_DELETE", "mapper is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10018, "MAPPER_NULL_DELETE", "mapper is null"));
         }
         if (entity == null) {
-            throw new ParamterInvalidException(new ErrorWrapper(10019, "ENTITY_NULL_DELETE", "entity is null"));
+            throw new ParamterInvalidException(new ErrorInfo(10019, "ENTITY_NULL_DELETE", "entity is null"));
         }
         try {
             long result = mapper.delete(entity);
@@ -182,7 +182,7 @@ public class MapperWrapper {
             return ResultFactory.success(entity);
         } catch (Throwable e) {
             if (error == null) {
-                error = new ErrorWrapper(10020, "SQL_ERROR_DELETE", "sql failed execute");
+                error = new ErrorInfo(10020, "SQL_ERROR_DELETE", "sql failed execute");
             }
             throw new DatabaseSqlExecuteException(error, e);
         }

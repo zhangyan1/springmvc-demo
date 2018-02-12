@@ -9,15 +9,15 @@ import ${package}.client.common.error.ErrorWrapper;
  * Created by ${userName} on ${today}.
  */
 public class ParamterInvalidException extends BaseException {
-    public ParamterInvalidException(ErrorWrapper errorWrapper) {
-        super(errorWrapper);
+    public ParamterInvalidException(ErrorInfo errorInfo) {
+        super(errorInfo);
     }
 
-    public ParamterInvalidException(ErrorWrapper errorWrapper, Throwable cause) {
-        super(errorWrapper, cause);
+    public ParamterInvalidException(ErrorInfo errorInfo, Throwable cause) {
+        super(errorInfo, cause);
     }
 
-    public ParamterInvalidException(ErrorWrapper errorWrapper, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(errorWrapper, cause, enableSuppression, writableStackTrace);
+    public ParamterInvalidException(ErrorInfo errorInfo, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(errorInfo, cause, enableSuppression, writableStackTrace);
     }
 }
