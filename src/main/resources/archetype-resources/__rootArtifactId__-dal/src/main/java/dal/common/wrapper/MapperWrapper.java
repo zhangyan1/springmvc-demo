@@ -7,7 +7,7 @@ import ${package}.client.common.domain.Domain;
 import ${package}.client.common.error.ErrorInfo;
 import ${package}.client.common.exception.DatabaseSqlExecuteException;
 import ${package}.client.common.exception.ParamterInvalidException;
-import ${package}.client.common.list.ListWrapper;
+import ${package}.client.common.list.ListVO;
 import ${package}.client.common.query.Query;
 import ${package}.client.common.result.Result;
 import ${package}.client.common.result.ResultFactory;
@@ -40,11 +40,11 @@ public class MapperWrapper {
         }
     }
 
-    public static <D extends Domain, Q extends Query> Result<ListWrapper<D>> find(Mapper<D, Q> mapper, Q query) {
+    public static <D extends Domain, Q extends Query> Result<ListVO<D>> find(Mapper<D, Q> mapper, Q query) {
         return find(mapper, query, null);
     }
 
-    public static <D extends Domain, Q extends Query> Result<ListWrapper<D>> find(Mapper<D, Q> mapper, Q query, ErrorInfo error) {
+    public static <D extends Domain, Q extends Query> Result<ListVO<D>> find(Mapper<D, Q> mapper, Q query, ErrorInfo error) {
         if (mapper == null) {
             throw new ParamterInvalidException(new ErrorInfo(10003, "MAPPER_NULL_FIND", "mapper is null"));
         }

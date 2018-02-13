@@ -1,7 +1,8 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package $
+
+package ${package}.client.common.domain;
 
 import java.io.Serializable;
 
@@ -11,7 +12,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-{package}.client.common.domain;
+
 
 
 
