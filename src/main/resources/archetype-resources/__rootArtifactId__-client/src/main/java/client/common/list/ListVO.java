@@ -1,6 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
 package ${package}.client.common.list;
 
 import lombok.AllArgsConstructor;
@@ -16,9 +13,11 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import ${package}.client.common.result.Result;
+
 
 /**
- * Created by ${userName} on ${today}.
+ * Created by zhangyan on 06/02/2018.
  */
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,7 +27,7 @@ import java.util.stream.Collectors;
 public class ListVO<Value> {
 	
     private List<Value> rows;
-    private Long total;
+    private Long totalCount;
     private Long currentPage;
     private Long pageSize;
 
