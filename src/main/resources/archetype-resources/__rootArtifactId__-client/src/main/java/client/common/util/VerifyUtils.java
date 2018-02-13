@@ -1,12 +1,15 @@
-package com.shinemo.meituan.client.common.list;
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+
+package ${package}.client.common.util;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
 /**
- * Created by harold on 8/23/16.
- * 通用校验对象
+ * Created by ${userName} on ${today}.
  */
 public class VerifyUtils {
     /**
