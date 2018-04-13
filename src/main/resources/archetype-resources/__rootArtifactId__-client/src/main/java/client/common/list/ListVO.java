@@ -6,18 +6,13 @@ package ${package}.client.common.list;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import ${package}.client.common.result.Result;
+import ${package}.client.common.util.VerifyUtils;
 
 
 /**
