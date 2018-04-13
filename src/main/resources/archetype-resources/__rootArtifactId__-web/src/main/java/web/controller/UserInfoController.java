@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.web.controller;
 
-import ${package}.client.common.list.ListWrapper;
+
 import ${package}.client.common.result.Result;
 import ${package}.core.user.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
