@@ -10,10 +10,15 @@ import ${package}.client.common.exception.ParamterInvalidException;
 import ${package}.client.common.list.ListVO;
 import ${package}.client.common.query.Query;
 import ${package}.client.common.result.Result;
-import ${package}.client.common.result.ResultFactory;
+import ${package}.client.common.result.Result;
 import ${package}.dal.common.mapper.Mapper;
 
 import java.util.List;
+
+import com.shinemo.springzy.client.common.list.ListVO;
+import com.shinemo.springzy.client.common.result.Result;
+
+import java.util.Collections;
 
 /**
  * Created by ${userName} on ${today}.
@@ -31,7 +36,7 @@ public class MapperWrapper {
             throw new ParamterInvalidException(new ErrorInfo(10001, "QUERY_NULL_COUNT", "query is null"));
         }
         try {
-            return ResultFactory.success(mapper.count(query));
+            return Result.success(mapper.count(query));
         } catch (Throwable e) {
             if (error == null) {
                 error = new ErrorInfo(10002, "SQL_ERROR_COUNT", "sql failed execute");
@@ -55,11 +60,11 @@ public class MapperWrapper {
             if (query.isPageEnable()) {
                 long count = mapper.count(query);
                 if (count < 1) {
-                    return ResultFactory.successList();
+                    return Result.success(ListVO.list(Collections.emptyList(), 0));
                 }
                 query.putTotalCount(count);
             }
-            return ResultFactory.successList(mapper.find(query), query.getTotalCount(), query.getCurrentPage(), query.getPageSize());
+            return Result.success(ListVO.list(mapper.find(query), query.getTotalCount(), query.getCurrentPage(), query.getPageSize()));
         } catch (Throwable e) {
             if (error == null) {
                 error = new ErrorInfo(10005, "SQL_ERROR_FIND", "sql failed execute");
@@ -80,7 +85,7 @@ public class MapperWrapper {
             throw new ParamterInvalidException(new ErrorInfo(10007, "QUERY_NULL_GET", "query is null"));
         }
         try {
-            return ResultFactory.successCheck(mapper.get(query), error);
+            return Result.success(mapper.get(query), error);
         } catch (Throwable e) {
             if (error == null) {
                 error = new ErrorInfo(10008, "SQL_ERROR_GET", "sql failed execute");
@@ -102,7 +107,7 @@ public class MapperWrapper {
         }
         try {
             mapper.insert(domain);
-            return ResultFactory.success(domain);
+            return Result.success(domain);
         } catch (Throwable e) {
             if (error == null) {
                 error = new ErrorInfo(10011, "SQL_ERROR_INSERT", "sql failed execute");
@@ -123,7 +128,7 @@ public class MapperWrapper {
             throw new ParamterInvalidException(new ErrorInfo(10013, "ENTITY_NULL_BATCH_INSERT", "entities is null"));
         }
         try {
-            return ResultFactory.success(mapper.batchInsert(entities));
+            return Result.success(mapper.batchInsert(entities));
         } catch (Throwable e) {
             if (error == null) {
                 error = new ErrorInfo(10014, "SQL_ERROR_INSERT", "sql failed execute");
@@ -147,11 +152,11 @@ public class MapperWrapper {
             long result = mapper.update(entity);
             if (result < 1) {
                 if (error == null) {
-                    return ResultFactory.success(entity);
+                    return Result.success(entity);
                 }
-                return ResultFactory.success(error);
+                return Result.success(error);
             }
-            return ResultFactory.success(entity);
+            return Result.success(entity);
         } catch (Throwable e) {
             if (error == null) {
                 error = new ErrorInfo(10017, "SQL_ERROR_UPDATE", "sql failed execute");
@@ -175,11 +180,11 @@ public class MapperWrapper {
             long result = mapper.delete(entity);
             if (result < 1) {
                 if (error == null) {
-                    return ResultFactory.success(entity);
+                    return Result.success(entity);
                 }
-                return ResultFactory.success(error);
+                return Result.success(error);
             }
-            return ResultFactory.success(entity);
+            return Result.success(entity);
         } catch (Throwable e) {
             if (error == null) {
                 error = new ErrorInfo(10020, "SQL_ERROR_DELETE", "sql failed execute");

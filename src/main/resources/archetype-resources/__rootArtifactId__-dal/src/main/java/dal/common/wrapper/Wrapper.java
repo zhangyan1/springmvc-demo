@@ -5,7 +5,7 @@ package ${package}.dal.common.wrapper;
 
 import ${package}.client.common.domain.Domain;
 import ${package}.client.common.error.ErrorInfo;
-import ${package}.client.common.list.ListWrapper;
+import ${package}.client.common.list.ListVO;
 import ${package}.client.common.query.Query;
 import ${package}.client.common.result.Result;
 import ${package}.dal.common.mapper.Mapper;
@@ -26,11 +26,11 @@ public abstract class Wrapper<D extends Domain, Q extends Query> {
         return MapperWrapper.count(getMapper(), query, error);
     }
 
-    public Result<ListWrapper<D>> find(Q query) {
+    public Result<ListVO<D>> find(Q query) {
         return MapperWrapper.find(getMapper(), query);
     }
 
-    public Result<ListWrapper<D>> find(Q query, ErrorInfo error) {
+    public Result<ListVO<D>> find(Q query, ErrorInfo error) {
         return MapperWrapper.find(getMapper(), query, error);
     }
 
