@@ -11,10 +11,9 @@
        "
 	default-autowire="byName">
 
-
 	<import resource="classpath:jdpurchase-web.xml" />
 
-	<context:component-scan base-package="com.shinemo.jd.web" />
+	<context:component-scan base-package="${package}.web" />
 	<context:annotation-config />
 
 	<mvc:annotation-driven conversion-service="conversionService" >
@@ -52,10 +51,6 @@
 
 	<bean id="exceptionHandler" class="com.shinemo.jd.web.common.ExceptionHandler" />
 
-	<bean class="com.shinemo.jd.web.common.ApplicationInitListener" />
-
-
-
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
 		<property name="locations">
 			<list>
@@ -63,43 +58,5 @@
 			</list>
 		</property>
 	</bean>
-	
-	
-	 <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
-    <bean id="multipartResolver"
-      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-      <property name="defaultEncoding" value="UTF-8" />
-      <!-- 指定所上传文件的总大小不能超过10MB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
-      <property name="maxUploadSize" value="10485760" />
-    </bean>
-    
-    
-     <bean id="ipWhiteListCallBack"
-          class="com.shinemo.client.interceptor.callback.impl.IpWhiteListCallBackImpl">
-        <property name="whiteHost">
-            <list>
-                <bean class="com.shinemo.client.interceptor.WhiteHost">
-                    <constructor-arg name="appName" value="_no_app_name"/>
-                    <constructor-arg name="ipList" value="${no_app_name_white_ip_list}"/>
-                </bean>
-            </list>
-        </property>
-    </bean>
-    
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.shinemo.client.interceptor.NotLoginAndWhiteUrlInterceptor">
-                <property name="ipWhiteListCallBack" ref="ipWhiteListCallBack"/>
-                <property name="isSkipWhiteUrlCheck" value="${jdpurchase.skip.white.url.check}"/>
-            </bean>
-        </mvc:interceptor>
-        
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.shinemo.jd.web.common.TokenInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
-    
 	<context:property-placeholder/>
 </beans>
