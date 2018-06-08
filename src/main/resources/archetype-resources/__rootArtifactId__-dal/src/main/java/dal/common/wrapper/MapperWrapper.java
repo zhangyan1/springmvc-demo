@@ -12,12 +12,10 @@ import ${package}.client.common.query.Query;
 import ${package}.client.common.result.Result;
 import ${package}.client.common.result.Result;
 import ${package}.dal.common.mapper.Mapper;
+import ${package}.client.common.list.ListVO;
+import ${package}.client.common.result.Result;
 
 import java.util.List;
-
-import com.shinemo.springzy.client.common.list.ListVO;
-import com.shinemo.springzy.client.common.result.Result;
-
 import java.util.Collections;
 
 /**

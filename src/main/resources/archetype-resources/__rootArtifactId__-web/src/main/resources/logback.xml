@@ -9,7 +9,7 @@
         <encoding>UTF-8</encoding>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${log.home}/buycenter.error.log.%d{yyyy-MM-dd}
+            <FileNamePattern>${log.home}/${rootArtifactId}.error.log.%d{yyyy-MM-dd}
             </FileNamePattern>
             <maxHistory>8</maxHistory>
         </rollingPolicy>
@@ -28,7 +28,7 @@
         <encoding>UTF-8</encoding>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${log.home}/buycenter.info.log.%d{yyyy-MM-dd}
+            <FileNamePattern>${log.home}/${rootArtifactId}.info.log.%d{yyyy-MM-dd}
             </FileNamePattern>
             <maxHistory>8</maxHistory>
         </rollingPolicy>
@@ -47,7 +47,7 @@
         <encoding>UTF-8</encoding>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${log.home}/buycenter.log.%d{yyyy-MM-dd}
+            <FileNamePattern>${log.home}/${rootArtifactId}.log.%d{yyyy-MM-dd}
             </FileNamePattern>
             <maxHistory>3</maxHistory>
         </rollingPolicy>
