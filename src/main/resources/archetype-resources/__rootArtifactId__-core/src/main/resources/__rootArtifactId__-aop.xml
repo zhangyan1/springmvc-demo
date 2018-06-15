@@ -14,13 +14,13 @@
 
 	<context:component-scan base-package="${package}.core.aop"/>
 
-	<bean id="performanceInner" class="${package}.client.common.aop.performance.PerformanceInner"/>
+	<bean id="performanceInner" class="com.shinemo.client.common.aop.performance.PerformanceInner"/>
 
-	<bean id="performanceOuter" class="${package}.client.common.aop.performance.PerformanceOuter">
+	<bean id="performanceOuter" class="com.shinemo.client.common.aop.performance.PerformanceOuter">
 		<property name="threshold" value="${threshold}"/>
 	</bean>
 
-	<bean id="printFacadeParamResult" class="${package}.client.common.aop.log.PrintParamResult"/>
+	<bean id="printFacadeParamResult" class="com.shinemo.client.common.aop.log.PrintParamResult"/>
 
 	<aop:config proxy-target-class="true">
 		<aop:pointcut id="printFacadeParamResultPointcut"
